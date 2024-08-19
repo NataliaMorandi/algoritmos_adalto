@@ -1,0 +1,23 @@
+-- SELECT * FROM cliente, pedido, movimento
+-- WHERE cliente.cod_cli = pedido.cod_cli
+-- AND pedido.nro_ped = movimento.nro_ped
+
+-- select c.nome, prod.nome from cliente c, pedido p, movimento m, produto prod
+-- where c.cod_cli = p.cod_cli and
+-- 		p.nro_ped = m.nro_ped and
+-- 		m.cod_prod = pro.cod_prod
+
+-- where faz junção de tabelas e faz qualificação/filtro
+
+SELECT 
+	cliente.nome AS cliente_nome,
+	produto.nome AS produto_nome
+	
+FROM
+	cliente
+	
+JOIN pedido ON pedido.cod_cli = cliente.cod_cli
+JOIN movimento ON movimento.nro_ped = pedido.nro_ped
+JOIN produto ON produto.cod_prod = movimento.cod_prod
+
+WHERE LOWER(cliente.cidade) = 'canoas'
